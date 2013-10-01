@@ -12,7 +12,7 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem "thin"
+  #gem "thin"
 end
 
 
