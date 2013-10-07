@@ -13,3 +13,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#setting file below to not be uploaded to github due to sensitivity of information
+config/initializers/setup_mail.rb
