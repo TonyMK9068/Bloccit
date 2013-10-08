@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   #works behind the seems, passing on user input or displaying error 
   
   def create 
-    @post = Post.new(params[:post])
+    @post = current_user.posts.build(params[:post])
     if @post.save
       flash[:notice] = "Post was saved."
       redirect_to @post
