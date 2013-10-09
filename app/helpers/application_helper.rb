@@ -2,8 +2,12 @@
 #It's actually a Module (remember the Classes checkpoint?) that Rails includes with other classes in your app. 
 #Basically, any public method you write in ApplicationHelper will be available anywhere.
 
-
 module ApplicationHelper
+end
+
+
+=begin
+
   def control_group_tag(errors, &block)
     if errors.any?
       content_tag :div, capture(&block), class: 'control-group error'
@@ -12,3 +16,4 @@ module ApplicationHelper
     end
   end
 end
+=end
