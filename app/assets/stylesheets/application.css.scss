@@ -7,3 +7,18 @@
 .nav {
   margin-top: 5px;
 }
+
+.hero-unit {
+background: #feffff; /* Old browsers */
+background: -moz-linear-gradient(left, #feffff 0%, #ddf1f9 35%, #3399FF 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#feffff), color-stop(35%,#ddf1f9), color-stop(100%,#3399FF)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #feffff 0%,#ddf1f9 35%,#3399FF 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #feffff 0%,#ddf1f9 35%,#3399FF 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #feffff 0%,#ddf1f9 35%,#3399FF 100%); /* IE10+ */
+background: linear-gradient(to right, #feffff 0%,#ddf1f9 35%,#3399FF 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#3399FF',GradientType=1 ); /* IE6-9 */
+}
+
+li {
+  position:block;
+}
