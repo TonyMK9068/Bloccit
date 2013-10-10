@@ -2,7 +2,6 @@
 #It's actually a Module (remember the Classes checkpoint?) that Rails includes with other classes in your app. 
 #Basically, any public method you write in ApplicationHelper will be available anywhere.
 
-
 module ApplicationHelper
   def control_group_tag(errors, &block)
     if errors.any?
@@ -10,5 +9,12 @@ module ApplicationHelper
     else
       content_tag :div, capture(&block), class: 'control-group'
     end
+  end
+
+  def markdown(text)
+    renderer= Redcarpet::Render::HTML.new
+    extensions = {fenced_code_blocks: true}
+    redcarpet = Redcarpet::Markdown.new(renderer, extensions)
+    (redcarpet.render text).html_safe
   end
 end
