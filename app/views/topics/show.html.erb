@@ -9,18 +9,25 @@
     <p class="lead"><%= @topic.description %></p>
     <% @posts.each do |post| %>
       <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-        <%= link_to (markdown post.title), [@topic, post] %>
-      </h4>
-<!-- end replace --> 
-          <small>
-            <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
-            submitted <%= time_ago_in_words(post.created_at) %> ago by 
-            <%= post.user.name %><br/>
-            <%= post.comments.count %> Comments
-          </small>
-        </div>
+        <div class="media-body">
+          
+
+          <h4 class="media-heading">
+            <%= link_to (markdown post.title), [@topic, post] %>
+          </h4>
+          <div class="container">
+            <div class="span4">
+              <small>
+                <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
+                submitted <%= time_ago_in_words(post.created_at) %> ago by 
+                <%= post.user.name %><br/>
+                <%= post.comments.count %> Comments
+              </small>
+            </div>
+            <div class="span5">
+              <%= image_tag(post.image.small) if post.image? %>
+            </div>
+          </div>
       </div>
     <% end %>
   </div>

@@ -1,17 +1,27 @@
+<div class=":hero-unit">
 <h1><%= markdown @post.title %></h1>
+</div>
+
+
+
+
+
 
 <div class="row">
-  <div class="span8">
-    <small>
-      <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
-      submitted <%= time_ago_in_words(@post.created_at) %> ago by 
-      <%= @post.user.name %>
-    </small>    
-    <p><%= markdown @post.body %></p>
-  </div>
   <div class="span4">
+    <h6> <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
+      submitted <%= time_ago_in_words(@post.created_at) %> ago by 
+      <%= @post.user.name %> 
+    </h>
+    <%= markdown @post.body %>
+    </div>
+  <div class="span5">
+    <%= image_tag(@post.image) if @post.image? %>
+  </div>
+  <div class="span3">
     <% if can? :edit, @post %>
       <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
     <% end %>
   </div>
 </div>
+
