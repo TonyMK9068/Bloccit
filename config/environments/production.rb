@@ -32,7 +32,7 @@ Bloccit::Application.configure do
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
-  config.assets.precompile += %w( 'welcome' )
+config.assets.precompile += %w('welcome.css')
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
 
