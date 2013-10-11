@@ -32,7 +32,7 @@ Bloccit::Application.configure do
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
-config.assets.precompile += %w('welcome.css')
+config.assets.precompile += %w(welcome.css)
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
 
@@ -47,7 +47,6 @@ config.assets.precompile += %w('welcome.css')
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
