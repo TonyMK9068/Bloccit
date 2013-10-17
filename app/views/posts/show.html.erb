@@ -26,27 +26,16 @@
     <% end %>
   </div>
 </div>
+<br>
 
-<div class="row">
-  <div class="span8">
-    <p class="lead"> 
-    <% @comments.each do |comment| %>
-      <div class="media">
-
-        <div class="media-body">
-          <div class="container">
-            <div class="span4">
-            <p>
-              <%= comment.body %>
-            </p>
-            </div>
-            <div class="span3">
-              by: <%= comment.user.name %>
-            </div>
-          </div>
-        </div>
-      </div>  
-    <% end %>
-    <%= will_paginate @comments %>
-  </div>
+<div>
+  <% if can? :new, Comment %>
+  <%= render partial: "comment/form", locals: {topic: @topic, post: @post, comment: @a} %>
+  <% end %>
 </div>
+
+<div>
+<%= render partial: "comment/comment", collection: @comments %>
+<%= will_paginate @comments %>
+</div>
+
