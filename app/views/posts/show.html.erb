@@ -30,12 +30,12 @@
 
 <div>
   <% if can? :new, Comment %>
-  <%= render partial: "comment/form", locals: {topic: @topic, post: @post, comment: @a} %>
+  <%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: @a } %>
   <% end %>
 </div>
 
 <div>
-<%= render partial: "comment/comment", collection: @comments %>
+<%= render partial: 'comments/comment', collection: @comments %>
 <%= will_paginate @comments %>
 </div>
 
