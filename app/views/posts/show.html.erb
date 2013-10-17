@@ -1,27 +1,52 @@
 <div class=":hero-unit">
-<h1><%= markdown @post.title %></h1>
+  <h1><%= markdown @post.title %></h1>
 </div>
 
-
-
-
-
-
 <div class="row">
-  <div class="span4">
-    <h6> <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
+  <div class="span3 offset 1">
+    <h6> <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %> 
       submitted <%= time_ago_in_words(@post.created_at) %> ago by 
       <%= @post.user.name %> 
-    </h>
-    <%= markdown @post.body %>
-    </div>
+    </h6>
+  </div>
   <div class="span5">
-    <%= image_tag(@post.image) if @post.image? %>
+    <p>
+      <%= markdown @post.body %>
+    </p>
   </div>
   <div class="span3">
+  <%= image_tag(@post.image) if @post.image? %>
+  </div>
+</div>
+
+<div class ="row">
+  <div class="span4 offset5">
     <% if can? :edit, @post %>
       <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
     <% end %>
   </div>
 </div>
 
+<div class="row">
+  <div class="span8">
+    <p class="lead"> 
+    <% @comments.each do |comment| %>
+      <div class="media">
+
+        <div class="media-body">
+          <div class="container">
+            <div class="span4">
+            <p>
+              <%= comment.body %>
+            </p>
+            </div>
+            <div class="span3">
+              by: <%= comment.user.name %>
+            </div>
+          </div>
+        </div>
+      </div>  
+    <% end %>
+    <%= will_paginate @comments %>
+  </div>
+</div>

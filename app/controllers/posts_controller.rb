@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @topic = Topic.find(params[:topic_id])
+    @comments = @post.comments.paginate(page: params[:page], per_page: 5) 
   end
 
   def new
@@ -12,9 +12,8 @@ class PostsController < ApplicationController
   end
 
   # Adding a create method to the posts_controller.rb
-  #works behind the seems, passing on user input or displaying error 
+  # works behind the seems, passing on user input or displaying error 
   def edit
-    @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     authorize! :edit, @post, message: "You need to have created that post in order to edit it"
   end 
@@ -33,7 +32,7 @@ class PostsController < ApplicationController
       render :new
     end
   end
-  
+
 
   def update
     @topic = Topic.find(params[:topic_id])

@@ -1,15 +1,22 @@
 Bloccit::Application.routes.draw do
-  
+
   devise_for :users
 
 
-#By calling resources :posts in the resources :topics block
-#you are instructing Rails to create nested routes.
+#nesting comments in posts, posts in topics
+
   resources :topics do
-    resources :posts, except: [:index]
+    resources :posts, except: [:index] do
+  
+      resources :comments, only: [:new, :create]
   end
 
+
+  end
+
+#mapping /about to welcome/about
   match "about" => 'welcome#about', via: :get
 
+#setting default path
   root :to => 'welcome#index'
 end
