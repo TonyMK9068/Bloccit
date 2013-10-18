@@ -20,11 +20,18 @@
 </div>
 
 <div class ="row">
-  <div class="span4 offset5">
+  <div class="span4 offset3">
     <% if can? :edit, @post %>
-      <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
+      <%= link_to "Edit Post", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
     <% end %>
   </div>
+
+  <div class="span3"> 
+  <% if can? :delete, @post %>
+    <%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-large btn-block btn-danger', confirm: 'Are you sure you want to delete this post?' %>
+    <% end %>
+  </div>
+
 </div>
 <br>
 

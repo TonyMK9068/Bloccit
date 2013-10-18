@@ -9,6 +9,7 @@
       </ul>
     </div>
   <% end %>
+
   <%= control_group_tag(post.errors[:title]) do %>
     <%= f.label :title, class: 'control-label' %>
     <div class="controls">
@@ -24,10 +25,13 @@
   <% end %>
 
 
+  <div class="control-group">
     <%= f.label :image, class: 'control-label' %>
     <div class="controls">
       <%= f.file_field :image %>
     </div>
+  </div>
+
 
   <div class="control-group">
     <div class="controls">
