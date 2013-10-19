@@ -1,48 +1,52 @@
-<div class=":hero-unit">
-  <h1><%= markdown @post.title %></h1>
+<div class="hero-unit">
+  <div class="row">
+  <div id="title"><%= markdown @post.title %></div>
+  </div>
 </div>
 
-<div class="row">
-  <div class="span3 offset 1">
-    <h6> <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %> 
-      submitted <%= time_ago_in_words(@post.created_at) %> ago by 
-      <%= @post.user.name %> 
-    </h6>
-  </div>
-  <div class="span5">
-    <p>
-      <%= markdown @post.body %>
-    </p>
-  </div>
-  <div class="span3">
+<div class ="btn-group btn-group-vertical pull-left">
+    <% if can? :edit, @post %>
+      <%= link_to "Edit Post", edit_topic_post_path(@topic,@post), class: 'btn' %>
+    <% end %>
+  <% if can? :delete, @post %>
+    <%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-info', confirm: 'Are you sure you want to delete this post?' %>
+    <% end %>
+</div>
+<div class="media">
+
+
+  <div class="pull-right media-object">
   <%= image_tag(@post.image) if @post.image? %>
   </div>
+<div class="media-body">
+  <div class="media-heading">
+    <h6> <%= image_tag(@post.user.avatar.small.url) if @post.user.avatar? %> 
+      Post submitted <%= time_ago_in_words(@post.created_at) %> ago by
+      <%= @post.user.name %> 
+    </h6> <%= markdown @post.body %>
+  </div>
+
 </div>
-
-<div class ="row">
-  <div class="span4 offset3">
-    <% if can? :edit, @post %>
-      <%= link_to "Edit Post", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
-    <% end %>
-  </div>
-
-  <div class="span3"> 
-  <% if can? :delete, @post %>
-    <%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-large btn-block btn-danger', confirm: 'Are you sure you want to delete this post?' %>
-    <% end %>
-  </div>
-
 </div>
 <br>
 
-<div>
+
+
+
+<div class="container-fluid">
+<div class="row-fluid">
+<div class="span4">
+<%= render partial: 'comments/comment', collection: @comments %>
+
+<%= will_paginate @comments %>
+</div>
+
+<div class="span4">
   <% if can? :new, Comment %>
-  <%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: @a } %>
+  <%= render partial: 'comments/form', locals: { comment: @a } %>
   <% end %>
 </div>
 
-<div>
-<%= render partial: 'comments/comment', collection: @comments %>
-<%= will_paginate @comments %>
 </div>
+
 

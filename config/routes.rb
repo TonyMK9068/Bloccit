@@ -3,11 +3,9 @@ Bloccit::Application.routes.draw do
 devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
 #nesting comments in posts, posts in topics
-
   resources :topics do
     resources :posts, except: [:index] do
-  
-      resources :comments, only: [:new, :create, :destroy]
+      resources :comments, only: [:create, :destroy]
   end
 end
 

@@ -9,8 +9,9 @@
             <%= link_to topic.name, topic %>
           </h4>
           <small>
-            <%= topic.description %>
-          </small>
+            <%= topic.description %> 
+          </small><br>
+          <small><%= pluralize(topic.posts.count, 'post') %>. Most recent post submitted <%= time_ago_in_words(topic.posts.first.created_at)%> ago by: &nbsp; <strong><%= image_tag(topic.posts.first.user.avatar.tiny.url) if topic.posts.first.user.avatar? %>  <%= topic.posts.first.user.name %></strong></small> 
         </div>
       </div>
     <% end %>
@@ -18,7 +19,7 @@
   </div>
   <div class="span4">
     <% if can? :create, Topic %>
-      <%= link_to "New Topic", new_topic_path, class: 'btn btn-large btn-block' %>
+      <%= link_to "New Topic", new_topic_path, class: 'btn btn-info' %>
     <% end %>
   </div>
 </div>

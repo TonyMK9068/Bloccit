@@ -1,7 +1,22 @@
-<h1><%= @topic.name %></h1>
-<% if can? :update, @topic %>
-  <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-primary btn-mini' %>
-<% end %>
+<div class="hero-unit">
+<h3><%= @topic.name %></h3>
+</div>
+
+<div class="pull-right">
+<div class="btn-group btn-group-vertical">
+<div><% if can? :create, Post %>
+    <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn' %>
+  <% end %>
+</div>
+
+<div>  <% if can? :delete, @topic %>
+    <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn', confirm: 'Are you sure you want to delete this topic?' %>
+  <% end %></div>
+<div><% if can? :update, @topic %>
+  <%= link_to "Edit Topic", edit_topic_path, class: 'btn' %>
+<% end %></div>
+  </div>
+</div>
 
 <div class="row">
   <div class="span8">
@@ -12,33 +27,20 @@
     <div class="media">
       <div class="media-body">
       <h4 class="media-heading">
-        <%= link_to (markdown post.title), [@topic, post] %>
+        <%= link_to (markdown post.title), [@topic, post] %> <small>  <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %> submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br/> </small>
       </h4>
-        <div class="container">
-          <div class="span4">
-          <small>
-          <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
-          submitted <%= time_ago_in_words(post.created_at) %> ago by 
-          <%= post.user.name %><br/>
-          <%= post.comments.count %> Comments
-          </small>
-          </div>
-          <div class="span5">
-          <%= image_tag(post.image.small) if post.image? %>
-          </div>
+      <small><%= (markdown post.body)  %></small>
+      </div>
+      <div class="row">
+        <div class="pull-left"> <%= post.comments.count %> <%= pluralize(post.comments.count, 'Comment') %></div>
+        <div class="pull-right">
+        <%= image_tag(post.image.small) if post.image? %>
         </div>
       </div>
+    </div>
     <% end %>
     <%= will_paginate @posts %>
-    </div>
-  </div>
-  <div class="span4">
-  <% if can? :create, Post %>
-    <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-large btn-block' %>
-  <% end %>
-  <% if can? :delete, @topic %>
-    <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-large btn-block btn-danger', confirm: 'Are you sure you want to delete this topic?' %>
-  <% end %>
 
   </div>
+
 </div>
