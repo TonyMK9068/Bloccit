@@ -3,8 +3,9 @@
 </div>
 
 <div class="pull-right">
-<div class="btn-group btn-group-vertical">
-<div><% if can? :create, Post %>
+  <div class="btn-group btn-group-vertical">
+  <div>
+  <% if can? :create, Post %>
     <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn' %>
   <% end %>
 </div>
@@ -19,7 +20,7 @@
 </div>
 
 <div class="row">
-  <div class="span8">
+  <div>
   <p class="lead">  
     <%= @topic.description %>
   </p>
@@ -27,12 +28,19 @@
     <div class="media">
       <div class="media-body">
       <h4 class="media-heading">
-        <%= link_to (markdown post.title), [@topic, post] %> <small>  <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %> submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br/> </small>
+        <%= link_to (markdown post.title), [@topic, post] %> 
+         <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %> 
+         <small>submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %></small>
+      <br/> 
       </h4>
       <small><%= (markdown post.body)  %></small>
-      </div>
-      <div class="row">
-        <div class="pull-left"> <%= post.comments.count %> <%= pluralize(post.comments.count, 'Comment') %></div>
+      
+        <% if (post.comments.count > 0) %>
+        <small><%= pluralize(post.comments.count, 'Comment') %> </small>
+        <% else %>
+        <small>No comments yet!</small>
+        <% end %> </small>
+
         <div class="pull-right">
         <%= image_tag(post.image.small) if post.image? %>
         </div>
@@ -40,7 +48,5 @@
     </div>
     <% end %>
     <%= will_paginate @posts %>
-
   </div>
-
 </div>

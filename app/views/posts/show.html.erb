@@ -4,14 +4,15 @@
   </div>
 </div>
 
-<div class ="btn-group btn-group-vertical pull-left">
+<div class ="btn-group btn-group pull-left">
     <% if can? :edit, @post %>
-      <%= link_to "Edit Post", edit_topic_post_path(@topic,@post), class: 'btn' %>
+      <%= link_to "Edit Post", edit_topic_post_path(@topic,@post), class: 'btn btn-mini' %>
     <% end %>
   <% if can? :delete, @post %>
-    <%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-info', confirm: 'Are you sure you want to delete this post?' %>
+    <%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-info btn-mini', confirm: 'Are you sure you want to delete this post?' %>
     <% end %>
 </div>
+
 <div class="media">
 
 
@@ -20,10 +21,10 @@
   </div>
 <div class="media-body">
   <div class="media-heading">
-    <h6> <%= image_tag(@post.user.avatar.small.url) if @post.user.avatar? %> 
-      Post submitted <%= time_ago_in_words(@post.created_at) %> ago by
-      <%= @post.user.name %> 
-    </h6> <%= markdown @post.body %>
+    <h4> <%= image_tag(@post.user.avatar.small.url) if @post.user.avatar? %> 
+      <strong><small>Post submitted <%= time_ago_in_words(@post.created_at) %> ago by
+      <%= @post.user.name %> </small></strong> </h4> 
+    <%= markdown @post.body %>
   </div>
 
 </div>
@@ -31,22 +32,22 @@
 <br>
 
 
-
-
-<div class="container-fluid">
-<div class="row-fluid">
-<div class="span4">
+<div class="container">
+  <div class="row">
+    <div class="span4">
+    <small>
 <%= render partial: 'comments/comment', collection: @comments %>
-
+</small>
 <%= will_paginate @comments %>
 </div>
 
-<div class="span4">
+<div class="offset2 span4">
   <% if can? :new, Comment %>
   <%= render partial: 'comments/form', locals: { comment: @a } %>
   <% end %>
 </div>
 
+</div>
 </div>
 
 
