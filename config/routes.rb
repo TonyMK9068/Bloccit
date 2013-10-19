@@ -1,7 +1,6 @@
 Bloccit::Application.routes.draw do
 
-  devise_for :users
-
+devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
 #nesting comments in posts, posts in topics
 
@@ -10,9 +9,8 @@ Bloccit::Application.routes.draw do
   
       resources :comments, only: [:new, :create, :destroy]
   end
+end
 
-
-  end
 
 #mapping /about to welcome/about
   match "about" => 'welcome#about', via: :get
