@@ -11,7 +11,7 @@
           <small>
             <%= topic.description %> 
           </small><br>
-          <small><%= pluralize(topic.posts.count, 'post') %>. Most recent post submitted <%= time_ago_in_words(topic.posts.first.created_at)%> ago by: &nbsp; <strong><%= image_tag(topic.posts.first.user.avatar.tiny.url) if topic.posts.first.user.avatar? %>  <%= topic.posts.first.user.name %></strong></small> 
+          <small> <%= pluralize(topic.posts.count, 'post') %>. Most recent post submitted <%= time_ago_in_words(topic.posts.first.created_at)%> ago by: &nbsp; <strong><%= image_tag(topic.posts.first.user.avatar.tiny.url) if topic.posts.first.user.avatar? %>  <%= topic.posts.first.user.name %> </strong></small> 
         </div>
       </div>
     <% end %>

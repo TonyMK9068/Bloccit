@@ -7,7 +7,7 @@
       </div>
   <div class="media-body">
       <h5 class="media-heading"> <small><em><%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
-      <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %>ago: </em> </small></h5>
+      <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago: </em> </small></h5>
 
       <%= comment.body %>
   </div>

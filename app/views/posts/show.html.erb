@@ -13,20 +13,17 @@
     <% end %>
 </div>
 
-<div class="media">
-
-
+<div class="media post-text">
   <div class="pull-right media-object">
   <%= image_tag(@post.image) if @post.image? %>
   </div>
-<div class="media-body">
+<div class="media-body lead">
   <div class="media-heading">
-    <h4> <%= image_tag(@post.user.avatar.small.url) if @post.user.avatar? %> 
+    <h2> <%= image_tag(@post.user.avatar.small.url) if @post.user.avatar? %> 
       <strong><small>Post submitted <%= time_ago_in_words(@post.created_at) %> ago by
-      <%= @post.user.name %> </small></strong> </h4> 
-    <%= markdown @post.body %>
+      <%= @post.user.name %> </small></strong> </h2> 
   </div>
-
+   <%= markdown @post.body %>
 </div>
 </div>
 <br>

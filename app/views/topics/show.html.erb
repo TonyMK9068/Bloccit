@@ -26,14 +26,16 @@
   </p>
   <% @posts.each do |post| %>
     <div class="media">
+
       <div class="media-body">
       <h4 class="media-heading">
         <%= link_to (markdown post.title), [@topic, post] %> 
+         <small>submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %>
          <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %> 
-         <small>submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %></small>
+         </small>
       <br/> 
       </h4>
-      <small><%= (markdown post.body)  %></small>
+      <small><%= (markdown post.body) %></small>
       
         <% if (post.comments.count > 0) %>
         <small><%= pluralize(post.comments.count, 'Comment') %> </small>

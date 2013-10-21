@@ -6,7 +6,6 @@ body {
   background-repeat:no-repeat;
   background-origin:padding-box;
   background-position:top;
-
 }
 
 .main-banner {
@@ -18,13 +17,10 @@ body {
   }
   color:white;  
 }
-li {
-  color:black;
-}
 
+li { color:black; }
 
-
-.second {
+row-fluid.main-banner.second {
 margin-top:5px;
 }
 
@@ -43,4 +39,29 @@ margin-top:5px;
   color: #fff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
   -webkit-font-smoothing: antialiased;
+}
+
+
+.container.special { margin-top:10px; }
+
+li p { margin-top:10px; }
+
+.user-avatar.nav.pull-left {
+  height:40px;
+  width:40px;
+}
+
+.navbar-inner.special {
+background-color: rgba(148, 158, 158, 0.44);
+  background-image: none;
+  background-repeat: no-repeat;
+  filter: none;
+
+}
+
+.img-rounded {
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
 }
