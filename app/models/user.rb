@@ -4,9 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar, :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar, :provider, :uid, :vote
   has_many :posts
   has_many :comments
+  has_many :votes, dependent: :destroy
   before_create :set_member
   mount_uploader :avatar, AvatarUploader
 

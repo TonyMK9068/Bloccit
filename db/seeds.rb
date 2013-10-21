@@ -32,7 +32,7 @@ rand(15..30).times do
       )
       # set the created_at to a time within the past year
     p.update_attribute(:created_at, Time.now - rand(600..31536000))
-
+    p.update_rank
     topics.rotate! #select next post to associate next comment that will be made
   end
 end

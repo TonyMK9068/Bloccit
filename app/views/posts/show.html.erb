@@ -4,7 +4,8 @@
   </div>
 </div>
 
-<div class ="btn-group btn-group pull-left">
+
+<div class ="btn-group btn-group">
     <% if can? :edit, @post %>
       <%= link_to "Edit Post", edit_topic_post_path(@topic,@post), class: 'btn btn-mini' %>
     <% end %>
@@ -13,18 +14,31 @@
     <% end %>
 </div>
 
-<div class="media post-text">
-  <div class="pull-right media-object">
-  <%= image_tag(@post.image) if @post.image? %>
-  </div>
-<div class="media-body lead">
-  <div class="media-heading">
-    <h2> <%= image_tag(@post.user.avatar.small.url) if @post.user.avatar? %> 
+
+<div>
+  <h3><%= pluralize(@post.points, 'point') %></h3>
+  <small>
+    <%= pluralize(@post.up_votes, 'up vote') %>, 
+    <%= pluralize(@post.down_votes, 'down vote') %>
+  </small>
+</div>
+
+
+<div class="container">
+  <div class="media post-text">
+  <%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
+    <div class="pull-right media-object">
+    <%= image_tag(@post.image) if @post.image? %>
+    </div>
+    <div class="media-body lead">
+      <div class="media-heading">
+      <h2> <%= image_tag(@post.user.avatar.small.url) if @post.user.avatar? %> 
       <strong><small>Post submitted <%= time_ago_in_words(@post.created_at) %> ago by
       <%= @post.user.name %> </small></strong> </h2> 
+      </div>
+    <%= markdown @post.body %>
+    </div>
   </div>
-   <%= markdown @post.body %>
-</div>
 </div>
 <br>
 
@@ -33,18 +47,15 @@
   <div class="row">
     <div class="span4">
     <small>
-<%= render partial: 'comments/comment', collection: @comments %>
-</small>
-<%= will_paginate @comments %>
-</div>
+    <%= render partial: 'comments/comment', collection: @comments %>
+    </small>
+    <%= will_paginate @comments %>
+    </div>
 
-<div class="offset2 span4">
-  <% if can? :new, Comment %>
-  <%= render partial: 'comments/form', locals: { comment: @a } %>
-  <% end %>
+    <div class="offset2 span4">
+    <% if can? :new, Comment %>
+    <%= render partial: 'comments/form', locals: { comment: @a } %>
+    <% end %>
+    </div>
+  </div>
 </div>
-
-</div>
-</div>
-
-
