@@ -1,7 +1,6 @@
 Bloccit::Application.routes.draw do
-
-
-devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+  resources :users, only: [:show] 
 
 #nesting comments in posts, posts in topics
   resources :topics do
@@ -10,8 +9,8 @@ devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks'
       match '/up-vote', to: 'votes#up_vote', as: :up_vote
       match '/down-vote', to: 'votes#down_vote', as: :down_vote
       resources :favorites, only: [:create, :destroy]
+    end
   end
-end
 
 #mapping /about to welcome/about
   match "about" => 'welcome#about', via: :get

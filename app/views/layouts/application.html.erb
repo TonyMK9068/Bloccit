@@ -13,7 +13,7 @@
 <!-- Header
 _______________________________________ -->
   <body>
-<div class="containter">
+<div class="container-fluid" id="main-div">
   <div class="container special">
     <div class="navbar">
       <div class="navbar-inner special">
@@ -22,28 +22,46 @@ _______________________________________ -->
       <li><%= link_to "Topics", topics_path %></li>
       <li><%= link_to "About", about_path %></li>
       </ul>
-      <% if current_user %>
+
+
+        <% if current_user %>
         <div class="pull-right">
         <ul class="nav">
           <div class="user-avatar nav pull-left">
           <%= image_tag(current_user.avatar.small.url, :class => "img-rounded") if current_user.avatar? %>
           </div>
-        <li>
-         <p>&nbsp;Welcome <%= link_to (current_user.name || current_user.email), edit_user_registration_path %></p>
-        </li>
-        <li>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-        </li>
+
+          <li>
+            <p>&nbsp;Welcome <%= link_to (current_user.name || current_user.email), current_user %>!
+            </p>
+          </li>
+          <li><%= link_to edit_user_registration_path, class: 'btn btn-mini' do %>
+            <i class="icon-user"> </i>
+          <% end %>
+          </li>
+
+          <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-mini' do %>
+            <i class="icon-share-alt"> </i>
+          <% end %>
+          </li>
         </ul>
-      </div>
-      <% else %>
+        </div>
+
+        <% else %>
         <div class="pull-right">
         <ul class="nav">
-        <li><%= link_to "Sign In", new_user_session_path %></li>    
-        <li><%= link_to "Sign Up", new_user_registration_path %></li> 
+          <li>
+          <%= link_to "Sign In", new_user_session_path %>
+          </li>    
+          <li>
+          <%= link_to "Sign Up", new_user_registration_path %>
+          </li> 
         </ul>
-      <% end %>
         </div>
+        <% end %>
+
+
       </div>
     </div>
   </div>

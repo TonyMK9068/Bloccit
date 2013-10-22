@@ -30,14 +30,19 @@
           </div>
 
           <li>
-            <p>&nbsp;Welcome <%= link_to (current_user.name || current_user.email), edit_user_registration_path %>!
+            <p>&nbsp;Welcome <%= link_to (current_user.name || current_user.email), current_user %>!
             </p>
+          </li>
+          <li><%= link_to edit_user_registration_path, class: 'btn btn-mini' do %>
+            <i class="icon-user"> </i>
+          <% end %>
           </li>
 
           <li>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-mini' do %>
+            <i class="icon-share-alt"> </i>
+          <% end %>
           </li>
-
         </ul>
         </div>
 
