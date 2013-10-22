@@ -1,13 +1,41 @@
-
+@import "bootstrap-custom";
 @import "bootstrap";
 
-.user-info {
-  margin-top: 9px;
+
+.user-avatar.nav.pull-left {
+  height:40px;
+  width:40px;
 }
 
-.nav {
-  margin-top: 5px;
+.navbar-inner.special {
+background-color: rgba(0, 123, 220, 0.80);
+  background-image: none;
+  background-repeat: no-repeat;
+  filter: none;
+  $linkColor: #00290C;
+  font-color:#FBFFFA;
 
+}
+.navbar .nav > li > a {
+color:#FBFFFA;
+text-decoration: none;
+text-shadow:none;
+
+}
+
+li p {
+  color:white;
+}
+
+.img-rounded {
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+
+li > p > a {
+  color:black;
 }
 
 .hero-unit {
@@ -36,4 +64,9 @@ align:center, justify;
 
 .favorite {
   margin-top: 20px;
+}
+
+
+.voted {
+  opacity: 0.5;
 }

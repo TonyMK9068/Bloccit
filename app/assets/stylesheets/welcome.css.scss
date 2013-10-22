@@ -52,11 +52,25 @@ li p { margin-top:10px; }
 }
 
 .navbar-inner.special {
-background-color: rgba(148, 158, 158, 0.44);
+background-color: rgba(0, 123, 220, 0.80);
   background-image: none;
   background-repeat: no-repeat;
   filter: none;
+  $linkColor: #00290C;
+  font-color:#FBFFFA;
 
+}
+
+
+.navbar .nav > li > a {
+color:#FBFFFA;
+text-decoration: none;
+text-shadow: 0 0 0 white;
+
+}
+
+li p {
+  color:white;
 }
 
 .img-rounded {
@@ -64,4 +78,8 @@ background-color: rgba(148, 158, 158, 0.44);
     top:0;
     bottom:0;
     margin:auto;
+}
+
+li > p > a {
+  color:black;
 }

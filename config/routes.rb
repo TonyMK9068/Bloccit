@@ -1,6 +1,7 @@
 Bloccit::Application.routes.draw do
 
-devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
 
 #nesting comments in posts, posts in topics
   resources :topics do
@@ -15,6 +16,5 @@ end
 #mapping /about to welcome/about
   match "about" => 'welcome#about', via: :get
 
-#setting default path
   root :to => 'welcome#index'
 end

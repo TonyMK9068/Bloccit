@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
   def favorited(post)
     self.favorites.where(post_id: post.id).first
   end
+  def voted(post)
+    self.votes.where(post_id: post.id).first
+  end
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -48,4 +51,5 @@ class User < ActiveRecord::Base
   def set_member
     self.role = 'member'
   end
+  
 end
