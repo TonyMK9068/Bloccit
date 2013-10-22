@@ -1,14 +1,25 @@
+<%= content_tag :div, class: 'media', id: "comment-#{comment.id}" do %>
+  <%= link_to '#', class: 'pull-left' do %>
+    <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
+    <% end %>
 <div class="media">
+  
   <div class="pull-left">
-
-       <% if can? :destroy, comment %>
-      <%= link_to "Delete", [@topic, @post, comment], method: :delete %>
-      <% end %>
-      </div>
+  <% if can? :destroy, comment %>
+  <%= link_to "Delete", [@topic, @post, comment], method: :delete %>
+  <% end %>
+  </div>
+  
   <div class="media-body">
-      <h5 class="media-heading"> <small><em><%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
-      <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago: </em> </small></h5>
+  <h5 class="media-heading"> 
+  <small><em>
 
-      <%= comment.body %>
+  <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
+  <%= comment.user.name %> commented <%= time_ago_in_words(comment.created_at) %> ago:
+
+  </em> </small>
+  </h5>
+  <%= comment.body %>
   </div>
 </div>
+<% end %>
