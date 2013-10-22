@@ -4,7 +4,7 @@
   <head>
     <title>Bloccit</title>
     <%= stylesheet_link_tag    "welcome", :media => "all" %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application", :media => "all" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -26,21 +26,19 @@
         <div class="pull-right">
         <ul class="nav">
           <div class="user-avatar nav pull-left">
-          <%= image_tag(current_user.avatar.small.url, :class => "img-rounded") if current_user.avatar? %>
+          <%= image_tag(current_user.avatar.small.url, class: "img-rounded") if current_user.avatar? %>
           </div>
 
           <li>
-            <p>&nbsp;Welcome <%= link_to (current_user.name || current_user.email), current_user %>!
+            <p>&nbsp;Welcome <%= link_to (current_user.name || current_user.email), current_user %> ! 
             </p>
           </li>
-          <li><%= link_to edit_user_registration_path, class: 'btn btn-mini' do %>
-            <i class="icon-user"> </i>
-          <% end %>
+          <li><%= link_to "Edit Details", edit_user_registration_path %>
           </li>
 
           <li>
-          <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-mini' do %>
-            <i class="icon-share-alt"> </i>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'btn' do %>
+            <i class="icon-remove icon-white"> </i>
           <% end %>
           </li>
         </ul>
@@ -91,8 +89,8 @@
     <p>Bloccit is a resource for sharing links with your friends!</p>
     <p>
     <% unless current_user %>
-      <%= link_to "Sign In", new_user_session_path, class: 'btn' %> or 
-      <%= link_to "Sign Up", new_user_registration_path, class: 'btn' %> today!
+      <%= link_to "Sign In", new_user_session_path, class: 'btn sign-in' %> or 
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn sign-in' %> today!
     <% end %>
     </p>
     </div>
