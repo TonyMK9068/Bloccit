@@ -55,8 +55,7 @@ users.each do |user|
   end
 end
 
-case Rails.env
-when "development"
+if Rails.env == "development"
 # Saves three particular user instances, members of various user groups.
 u = User.new(
   name: 'Admin User',
@@ -89,4 +88,4 @@ end
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Post.count} posts created"
-puts "#{Comment.count} comments created
+puts "#{Comment.count} comments created"
