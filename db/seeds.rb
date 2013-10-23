@@ -55,7 +55,8 @@ users.each do |user|
   end
 end
 
-
+case Rails.env
+when "development"
 # Saves three particular user instances, members of various user groups.
 u = User.new(
   name: 'Admin User',
@@ -82,9 +83,10 @@ u = User.new(
   password_confirmation: 'helloworld')
 u.skip_confirmation!
 u.save
+end
 
 #Console output
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Post.count} posts created"
-puts "#{Comment.count} comments created"
+puts "#{Comment.count} comments created
