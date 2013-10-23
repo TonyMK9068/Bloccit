@@ -53,8 +53,15 @@
     </div>
 
     <div class="offset2 span4">
-    <% if can? :new, Comment %>
+    <% if can? :create, Comment %>
+    <hr/>
+    <a href="#" class="js-show-hide" data-selector="js-new-comment">Add Comment</a>
+     <br/>
+      <div class="js-new-comment hide">
+       <h4>New Comment</h4>
+
     <%= render partial: 'comments/form', locals: { comment: @a } %>
+    </div>
     <% end %>
     </div>
   </div>
