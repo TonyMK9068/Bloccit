@@ -12,6 +12,7 @@ body {
   position:relative;
   top:450px;
   background-color: rgba(0, 0, 0, 0.75);
+
   h1, h2, p {
   text-align:center;
   }
@@ -20,8 +21,10 @@ body {
 
 li { color:black; }
 
-row-fluid.main-banner.second {
-margin-top:5px;
+.second {
+margin-top:10px;
+
+
 }
 
 
@@ -53,8 +56,6 @@ li p { margin-top:10px; }
   width:40px;
 }
 
-
-
 .navbar-inner.special {
 background-color: rgba(0, 123, 220, 0.80);
   background-image: none;
@@ -65,12 +66,10 @@ background-color: rgba(0, 123, 220, 0.80);
 
 }
 
-
 .navbar .nav > li > a {
 color:#FBFFFA;
 text-decoration: none;
 text-shadow: 0 0 0 white;
-
 }
 
 li p {

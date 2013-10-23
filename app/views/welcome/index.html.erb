@@ -18,9 +18,10 @@
       <ul class="nav">
       <li><%= link_to "Bloccit", root_path %></li>
       <li><%= link_to "Topics", topics_path %></li>
+      <li><%= link_to "Popular", posts_path %></li>
+      <li><%= link_to "Users", users_path %></li>
       <li><%= link_to "About", about_path %></li>
       </ul>
-
 
         <% if current_user %>
         <div class="pull-right">
@@ -29,16 +30,15 @@
           <%= image_tag(current_user.avatar.small.url, class: "img-rounded") if current_user.avatar? %>
           </div>
 
-          <li>
-            <p>&nbsp;Welcome <%= link_to (current_user.name || current_user.email), current_user %> ! 
-            </p>
+          <li><p>&nbsp;Welcome <%= link_to (current_user.name || current_user.email), current_user %> ! </p>
           </li>
-          <li><%= link_to "Edit Details", edit_user_registration_path %>
+          <li><%= link_to edit_user_registration_path  do %>
+            <i class="icon-user"> </i> Settings
+          <% end %>
           </li>
-
           <li>
-          <%= link_to destroy_user_session_path, method: :delete, class: 'btn' do %>
-            <i class="icon-remove icon-white"> </i>
+          <%= link_to destroy_user_session_path, method: :delete  do %>
+            <i class="icon-share-alt"> </i> Logout
           <% end %>
           </li>
         </ul>
@@ -47,12 +47,8 @@
         <% else %>
         <div class="pull-right">
         <ul class="nav">
-          <li>
-          <%= link_to "Sign In", new_user_session_path %>
-          </li>    
-          <li>
-          <%= link_to "Sign Up", new_user_registration_path %>
-          </li> 
+          <li><%= link_to "Sign In", new_user_session_path %></li>    
+          <li><%= link_to "Sign Up", new_user_registration_path %></li> 
         </ul>
         </div>
         <% end %>
@@ -82,9 +78,9 @@
     <% end %>
   </div>
 
-
-  <div class="row-fluid">
-    <div class="span12 main-banner">
+<div class="containter-fluid">
+  <div class="row-fluid main-banner">
+    <div class="span12">
     <h1>Bloccit</h1>
     <p>Bloccit is a resource for sharing links with your friends!</p>
     <p>
@@ -111,8 +107,6 @@
     </div>
   </div>
 </div>
-
-
-
+</div>
 </body>
 </html>

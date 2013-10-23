@@ -25,6 +25,7 @@ text-shadow:none;
 
 li p {
   color:white;
+  margin-top:10px;
 }
 
 .img-rounded {
@@ -33,6 +34,8 @@ li p {
     bottom:0;
     margin:auto;
 }
+
+.container.special { margin-top:10px; }
 
 li > p > a {
   color:black;

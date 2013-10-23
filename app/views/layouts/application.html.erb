@@ -20,6 +20,8 @@ _______________________________________ -->
       <ul class="nav">
       <li><%= link_to "Bloccit", root_path %></li>
       <li><%= link_to "Topics", topics_path %></li>
+      <li><%= link_to "Popular", posts_path %></li>
+      <li><%= link_to "Users", users_path %></li>
       <li><%= link_to "About", about_path %></li>
       </ul>
 
@@ -35,14 +37,14 @@ _______________________________________ -->
             <p>&nbsp;Welcome <%= link_to (current_user.name || current_user.email), current_user %>!
             </p>
           </li>
-          <li><%= link_to edit_user_registration_path, class: 'btn btn-mini' do %>
-            <i class="icon-user"> </i>
+          <li><%= link_to edit_user_registration_path  do %>
+            <i class="icon-user"> </i> Settings
           <% end %>
           </li>
 
           <li>
-          <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-mini' do %>
-            <i class="icon-share-alt"> </i>
+          <%= link_to destroy_user_session_path, method: :delete  do %>
+            <i class="icon-share-alt"> </i> Logout
           <% end %>
           </li>
         </ul>
