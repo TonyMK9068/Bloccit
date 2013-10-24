@@ -46,7 +46,9 @@
 <div class="container">
   <div class="row">
     <div class="span4">
+     <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
     <small>
+
     <%= render partial: 'comments/comment', collection: @comments %>
     </small>
     <%= will_paginate @comments %>
@@ -54,7 +56,9 @@
 
     <div class="offset2 span4">
     <% if can? :create, Comment %>
+
     <hr/>
+
     <a href="#" class="js-show-hide" data-selector="js-new-comment">Add Comment</a>
      <br/>
       <div class="js-new-comment hide">
