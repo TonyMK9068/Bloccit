@@ -6,7 +6,8 @@ class Comment < ActiveRecord::Base
   after_create :send_favorite_emails
 
   default_scope order('created_at DESC')
-
+  default_scope order('updated_at DESC')
+  
   validates :body, length: { minimum: 5 }, presence: true
   validates :user, presence: true
   validates :post, presence: true
