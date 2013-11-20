@@ -12,13 +12,14 @@ end
 
 group :development do
   gem 'sqlite3'
-  #gem "thin"
+
 end
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'simplecov'
 end
 
 # Gems used only for assets and not required
@@ -26,7 +27,7 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.6'
   gem 'coffee-rails', '~> 3.2.2'
-gem 'bootstrap-sass', '~> 2.3.1.0'
+  gem 'bootstrap-sass', '~> 2.3.1.0'
 
   gem 'uglifier', '>= 1.0.3'
 end
