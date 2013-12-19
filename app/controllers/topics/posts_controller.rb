@@ -6,9 +6,10 @@ class Topics::PostsController < ApplicationController
     authorize! :new, Post, message: "You need to be a member to create a new post."
   end
 
-  def create 
+  def create
+    @user = current_user
     @topic = Topic.find(params[:topic_id])
-    @post = current_user.posts.build(params[:post])
+    @post = @user.posts.build(params[:post])
     @post.topic = @topic
 
     authorize! :create, Post, message: "You need to be signed up to do that."

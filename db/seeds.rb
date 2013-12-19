@@ -1,6 +1,5 @@
 require 'faker'
 
-#create 20 topics
 topics = []
 20.times do
   topics << Topic.create(
@@ -9,7 +8,6 @@ topics = []
   )
 end
 
-#create random amount of users
 rand(15..30).times do
   password = Faker::Lorem.characters(10)
   u = User.new(
@@ -20,26 +18,21 @@ rand(15..30).times do
   u.skip_confirmation!
   u.save
 
-#create a random amount of posts within specified range
-#relate to user and topic
 
   rand(5..12).times do
-    topic = topics.first # getting the first topic here
+    topic = topics.first 
     p = u.posts.create(
       topic: topic,
       title: Faker::Lorem.words(rand(1..10)).join(" "), 
       body: Faker::Lorem.paragraphs(rand(1..4)).join("\n")
       )
-      # set the created_at to a time within the past year
+ 
     p.update_attribute(:created_at, Time.now - rand(600..31536000))
     p.update_rank
-    topics.rotate! #select next post to associate next comment that will be made
+    topics.rotate! 
   end
 end
 
-
-#create comments for each user
-#set post_id to be a random number
 users = []
 random_post = []
 users = User.all
@@ -56,7 +49,7 @@ users.each do |user|
 end
 
 if Rails.env == "development"
-# Saves three particular user instances, members of various user groups.
+
 u = User.new(
   name: 'Admin User',
   email: 'admin@example.com', 
@@ -84,7 +77,6 @@ u.skip_confirmation!
 u.save
 end
 
-#Console output
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Post.count} posts created"

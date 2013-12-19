@@ -11,7 +11,6 @@ class VotesController < ApplicationController
     redirect_to :back
   end
 
-
   private
 
   def setup

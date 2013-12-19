@@ -11,11 +11,16 @@ class User < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  validates_length_of :name, in: 3..25, allow_blank: true
+  validates_presence_of :email, :password
+  validates_uniqueness_of :email
+  validates_format_of :email, with: /\A([-a-z0-9!\#$%&'*+\/=?^_`{|}~]+\.)*[-a-z0-9!\#$%&'*+\/=?^_`{|}~]+@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+
   before_create :set_member
 
   mount_uploader :avatar, AvatarUploader
 
-  def has_avatar?(user)
+  def has_avatar?
     self.avatar.present?
   end
 

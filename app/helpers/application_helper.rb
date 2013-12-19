@@ -38,6 +38,7 @@ module ApplicationHelper
   def avatar_size(size)
     case size
     when "small" then self.avatar.small.url
+    when "tiny" then self.avatar.tiny.url
     end
   end
 end
