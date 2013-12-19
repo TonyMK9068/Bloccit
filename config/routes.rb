@@ -4,7 +4,6 @@ Bloccit::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   resources :users, only: [:show, :index] 
 
-#nesting comments in posts, posts in topics
   resources :posts, only: [:index]
   resources :topics do
     resources :posts, except: [:index], controller: 'topics/posts' do
@@ -15,10 +14,6 @@ Bloccit::Application.routes.draw do
     end
   end
 
-
-
-
-#mapping /about to welcome/about
   match "about" => 'welcome#about', via: :get
 
   root :to => 'welcome#index'

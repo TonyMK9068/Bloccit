@@ -1,32 +1,10 @@
-@import "bootstrap";
-
-
 body {
   background-image:url('lego.jpg');
   background-repeat:no-repeat;
   background-origin:padding-box;
   background-position:top;
-}
-
-.main-banner {
-  position:relative;
-  top:450px;
-  background-color: rgba(0, 0, 0, 0.75);
-
-  h1, h2, p {
-  text-align:center;
-  }
-  color:white;  
-}
-
-li { color:black; }
-
-.second {
-margin-top:10px;
-
 
 }
-
 
 .btn {
   background-color: hsl(0, 0%, 19%) !important;
@@ -45,44 +23,24 @@ margin-top:10px;
   -webkit-font-smoothing: antialiased;
 }
 
-
-
-.container.special { margin-top:10px; }
-
-li p { margin-top:10px; }
-
-.user-avatar.nav.pull-left {
-  height:40px;
-  width:40px;
+.row.main-banner.hero-unit {
+  background: none;
+  background-color:white;
 }
 
-.navbar-inner.special {
-background-color: rgba(0, 123, 220, 0.80);
-  background-image: none;
-  background-repeat: no-repeat;
-  filter: none;
-  $linkColor: #00290C;
-  font-color:#FBFFFA;
-
-}
-
-.navbar .nav > li > a {
-color:#FBFFFA;
-text-decoration: none;
-text-shadow: 0 0 0 white;
-}
-
-li p {
-  color:white;
-}
-
-.img-rounded {
-    position:absolute;
-    top:0;
-    bottom:0;
+.container-fluid#well {
+  position: absolute;
+  bottom:170px;
+  left:0;
+  right:0;
+  
+  div.row-fluid {
     margin:auto;
-}
-
-li > p > a {
-  color:black;
+  
+    div.well {
+      display:inline;
+      float:left;
+      margin: 0 5px 0 5px;
+    }
+  }
 }

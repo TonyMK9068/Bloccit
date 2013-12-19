@@ -1,7 +1,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.16'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -22,17 +22,14 @@ group :development, :test do
   gem 'simplecov'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.6'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'bootstrap-sass', '~> 2.3.1.0'
-
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'bootstrap-sass'
+  gem 'uglifier'
 end
 
-
+gem 'thin'
 gem 'jquery-rails'
 gem 'faker'
 gem 'devise'
@@ -47,3 +44,5 @@ gem 'thin'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'newrelic_rpm'
+gem "brakeman", :require => false
+gem 'haml'

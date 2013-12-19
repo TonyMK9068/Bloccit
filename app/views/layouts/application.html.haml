@@ -1,0 +1,33 @@
+!!! 5
+%html
+
+  %head
+    %title Bloccit
+    = stylesheet_link_tag "application", media: "all"
+    = yield :head
+    = csrf_meta_tags
+
+  %body
+    = render partial: "layouts/nav_bar"
+    
+    .container.banner 
+      - if flash[:notice]
+        .alert.alert-info
+          %button.close{type: "button", data: { dismiss: "alert" } } &times;
+          = flash[:notice]
+    
+      - elsif flash[:error]
+        .alert.alert-error
+          %button.close{type: "button", data: { dismiss: "alert" } } &times;
+          = flash[:error]
+
+      - elsif flash[:alert]
+        .alert.alert-error
+          %button.close{type: "button", data: { dismiss: "alert" } } &times;
+          = flash[:alert]
+
+  .container
+    = yield
+    
+  = javascript_include_tag "application"
+

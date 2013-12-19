@@ -9,7 +9,8 @@ class Topics::PostsController < ApplicationController
   def create 
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(params[:post])
-    @post.topic = @topic #defines @topic's :id to @post's :topic_id
+    @post.topic = @topic
+
     authorize! :create, Post, message: "You need to be signed up to do that."
     if @post.save
       flash[:notice] = "Post was saved."
@@ -27,8 +28,7 @@ class Topics::PostsController < ApplicationController
     @a = Comment.new
     @comments = @post.comments.paginate(page: params[:page], per_page: 5)
   end
-    # Adding a create method to the posts_controller.rb
-    # works behind the seems, passing on user input or displaying error 
+
   def edit
     @post = Post.find(params[:id])
     authorize! :edit, @post, message: "You need to have created that post in order to edit it"

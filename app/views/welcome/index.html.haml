@@ -1,0 +1,35 @@
+-content_for :head do
+
+  = stylesheet_link_tag "welcome"
+
+.container
+  .row.main-banner.hero-unit 
+    .span12
+      %h1 Bloccit
+      %p Bloccit is a resource for sharing links with your friends!
+
+      - unless current_user
+        %span #{link_to "Sign In", new_user_session_path, class: 'btn sign-in'} o
+        %spans #{link_to "Sign Up", new_user_registration_path, class: 'btn sign-in'} today!
+
+.container-fluid#well
+  .row-fluid
+    .well.span4
+      %h2
+        Litora fringilla accumsan conubia aptent.
+      %p 
+        Cras pretium diam porttitor aptent tristique viverra hendrerit, odio consequat aenean nam. Egestas purus eu egestas diam placerat quisque. Ultricies conubia integer elit, nunc nullam. Platea enim, dapibus euismod ullamcorper libero viverra. Dis urna sit venenatis viverra ornare, curabitur ornare. Nibh tristique iaculis posuere ultrices magna nullam aliquet. Egestas porttitor himenaeos in mi metus metus habitant sociosqu lorem. Luctus facilisi.
+
+    .well.span4
+      %h2
+        Fusce et tristique volutpat porta?
+
+      %p 
+        Cras pretium diam porttitor aptent tristique viverra hendrerit, odio consequat aenean nam. Egestas purus eu egestas diam placerat quisque. Ultricies conubia integer elit, nunc nullam. Platea enim, dapibus euismod ullamcorper libero viverra. Dis urna sit venenatis viverra ornare, curabitur ornare. Nibh tristique iaculis posuere ultrices magna nullam aliquet. Egestas porttitor himenaeos in mi metus metus habitant sociosqu lorem. Luctus facilisi.
+
+    .well.span4
+      %h2
+        Mollis tincidunt non interdum natoque integer.
+
+      %p 
+        Cras pretium diam porttitor aptent tristique viverra hendrerit, odio consequat aenean nam. Egestas purus eu egestas diam placerat quisque. Ultricies conubia integer elit, nunc nullam. Platea enim, dapibus euismod ullamcorper libero viverra. Dis urna sit venenatis viverra ornare, curabitur ornare. Nibh tristique iaculis posuere ultrices magna nullam aliquet. Egestas porttitor himenaeos in mi metus metus habitant sociosqu lorem. Luctus facilisi.

@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable,
          :validatable, :confirmable, :omniauthable, :omniauth_providers => [:facebook]
 
@@ -11,18 +10,26 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
   before_create :set_member
 
   mount_uploader :avatar, AvatarUploader
-  #did user favorite this post? boolean
 
-  def favorited(post)
+  def has_avatar?(user)
+    self.avatar.present?
+  end
+
+  def name_or_email
+    self.name.present?? self.name : self.email
+  end
+
+  def favorited?(post)
     self.favorites.where(post_id: post.id).first
   end
-  def voted(post)
+
+  def voted?(post)
     self.votes.where(post_id: post.id).first
   end
-
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -51,7 +58,6 @@ class User < ActiveRecord::Base
         group('users.id'). # Instructs the database to group the results so that each user will be returned in a distinct row
         order('rank DESC') # Instructs the database to order the results in descending order, by the rank that we created in this query. (rank = comment count + post count)
   end
-
 
   ROLES = %w[member moderator admin]
   def role?(base_role)

@@ -34,4 +34,10 @@ module ApplicationHelper
     topic = post.topic
     [topic, post, comment]
   end
+
+  def avatar_size(size)
+    case size
+    when "small" then self.avatar.small.url
+    end
+  end
 end

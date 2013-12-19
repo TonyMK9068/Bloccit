@@ -3,7 +3,6 @@ class BootstrapLinkRenderer < WillPaginate::ActionView::LinkRenderer
     tag :div, tag(:ul, html), container_attributes
   end
 
-
   def page_number(page)
     tag :li, 
       link(page, page, rel: rel_value(page)), 

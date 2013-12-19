@@ -35,14 +35,6 @@ ActiveRecord::Schema.define(:version => 20131021215618) do
   add_index "favorites", ["post_id"], :name => "index_favorites_on_post_id"
   add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
-  create_table "identities", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "identities", ["user_id"], :name => "index_identities_on_user_id"
-
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "body"

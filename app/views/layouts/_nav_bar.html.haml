@@ -1,0 +1,33 @@
+.container-fluid
+  .container
+    .row
+      .navbar
+        .navbar-inner#special
+          %ul.nav
+            %li= link_to "Bloccit", root_path
+            %li= link_to "Topics", topics_path
+            %li= link_to "Popular", posts_path
+            %li= link_to "Users", users_path
+            %li= link_to "About", about_path
+
+          - if current_user
+            .pull-right
+              %ul.nav
+                - if has_avatar?(current_user)
+                  .user-avatar.nav.pull-left
+                    = image_tag(current_user.avatar("small"), id: "img-rounded")
+                %li
+                  %p &nbsp;Welcome #{link_to current_user.name_or_email, current_user}!
+
+                %li
+                  %button.btn.btn-default.btn-lg{type: "button"}= link_to "Settings", edit_user_registration_path
+
+                %li
+                  %button.btn.btn-default.btn-lg{type: "button"}= link_to "Log out", destroy_user_session_path, method: :delete
+    
+
+          - else
+            .pull-right
+              %ul.nav
+                %li= link_to "Sign In", new_user_session_path
+                %li= link_to "Sign Up", new_user_registration_path
