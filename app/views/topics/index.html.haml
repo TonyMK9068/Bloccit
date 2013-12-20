@@ -1,25 +1,25 @@
 %h1 Topics
 
 .row
-  .span8
+  .col-sm-8
     - @topics.each do |topic|
       .media
         .media-body
-          %h4.media-heading
-            = link_to topic.name, topic
 
-          %small
-            = topic.description 
+          %h4.media-heading= link_to topic.name, topic
+          %small= topic.description
+
           %br
-          %small
-            = #{pluralize(topic.posts.count, 'post')}. Most recent post submitted #{time_ago_in_words(latest_post_for(topic).created_at)} ago by: &nbsp;
-            - if latest_post_for(topic).user.has_avatar?
-              %span
-                %strong= image_tag latest_post_for(topic).user.avatar_size("tiny")
-                %span= latest_post_for(topic).user.name
+
+          %small= "#{pluralize(topic.posts.count, 'post')}. Most recent post submitted #{time_ago_in_words(latest_post_for(topic).created_at)} ago by:&nbsp;".html_safe
+
+          - if latest_post_for(topic).user.has_avatar?
+            %span
+              %strong= image_tag latest_post_for(topic).user.avatar_size("tiny")
+          = latest_post_for(topic).user.name
 
     = will_paginate @topics
 
-  .span4
+  .col-sm-4
     -if can? :create, Topic
       = link_to "New Topic", new_topic_path, class: 'btn btn-info'

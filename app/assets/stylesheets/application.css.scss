@@ -1,7 +1,7 @@
 @import "bootstrap";
 @import "bootstrap/theme";
 @import "bourbon";
-@import "welcome";
+
 
 /********* Nav Bar *********/
 
@@ -40,4 +40,10 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.panel {
+
+  display:inline;
+  font-family: $helvetica;
+  margin: 0 10px 0 10px;
 }

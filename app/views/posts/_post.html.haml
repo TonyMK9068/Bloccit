@@ -1,0 +1,14 @@
+.media
+  = render partial: 'votes/voter', locals: { topic: post.topic, post: post }
+  = link_to [post.topic, post], class: 'pull-left' do
+    = image_tag(post.image.small.url) if post.image?
+
+  .media-body
+    %h4.media-heading
+      = link_to (markdown post.title), [post.topic, post]
+    - if post.user.avatar?
+      %small= image_tag(post.user.avatar.tiny.url)
+    submitted #{time_ago_in_words(post.created_at)} ago by
+    = link_to post.user.name, post.user
+    %br
+    #{post.comments.count} Comments

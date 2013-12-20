@@ -1,0 +1,7 @@
+.row
+  .col-sm-8
+    %h1 Popular
+    %p.lead Active posts this week
+    = render partial: 'posts/post', collection: @posts
+    
+    = will_paginate @posts
