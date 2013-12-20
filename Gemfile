@@ -24,9 +24,10 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'bootstrap-sass', '~> 3.0.2.0'
   gem 'uglifier', '>= 1.0.3'
+  gem 'bourbon'
 end
 
-gem 'bourbon'
+
 gem 'thin'
 gem 'jquery-rails'
 gem 'faker'
