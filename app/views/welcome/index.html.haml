@@ -2,33 +2,35 @@
   = stylesheet_link_tag "welcome"
 
 .container
-  .row.main-banner.hero-unit 
-    .span12
+  .row
+    .jumbotron#main-banner
       %h1 Bloccit
       %p Bloccit is a resource for sharing links with your friends!
 
       - unless current_user
-        %span #{link_to "Sign In", new_user_session_path, class: 'btn sign-in'} o
-        %spans #{link_to "Sign Up", new_user_registration_path, class: 'btn sign-in'} today!
+        %span
+          %button.btn.btn-default.button-lg #{link_to "Sign In", new_user_session_path, class: 'btn sign-in'}
+          %button.btn.btn-default.button-lg #{link_to "Sign Up", new_user_registration_path, class: 'btn sign-in'}
 
-.container-fluid#well
-  .row-fluid
-    .well.span4
+.container-liquid
+  .row-liquid
+    .panel.col-sm-3.center-block
       %h2
         Litora fringilla accumsan conubia aptent.
+      %hr
       %p 
         Cras pretium diam porttitor aptent tristique viverra hendrerit, odio consequat aenean nam. Egestas purus eu egestas diam placerat quisque. Ultricies conubia integer elit, nunc nullam. Platea enim, dapibus euismod ullamcorper libero viverra. Dis urna sit venenatis viverra ornare, curabitur ornare. Nibh tristique iaculis posuere ultrices magna nullam aliquet. Egestas porttitor himenaeos in mi metus metus habitant sociosqu lorem. Luctus facilisi.
 
-    .well.span4
+    .panel.col-sm-3.center-block
       %h2
         Fusce et tristique volutpat porta?
-
+      %hr
       %p 
         Cras pretium diam porttitor aptent tristique viverra hendrerit, odio consequat aenean nam. Egestas purus eu egestas diam placerat quisque. Ultricies conubia integer elit, nunc nullam. Platea enim, dapibus euismod ullamcorper libero viverra. Dis urna sit venenatis viverra ornare, curabitur ornare. Nibh tristique iaculis posuere ultrices magna nullam aliquet. Egestas porttitor himenaeos in mi metus metus habitant sociosqu lorem. Luctus facilisi.
 
-    .well.span4
+    .panel.col-sm-3.center-block
       %h2
         Mollis tincidunt non interdum natoque integer.
-
+      %hr
       %p 
         Cras pretium diam porttitor aptent tristique viverra hendrerit, odio consequat aenean nam. Egestas purus eu egestas diam placerat quisque. Ultricies conubia integer elit, nunc nullam. Platea enim, dapibus euismod ullamcorper libero viverra. Dis urna sit venenatis viverra ornare, curabitur ornare. Nibh tristique iaculis posuere ultrices magna nullam aliquet. Egestas porttitor himenaeos in mi metus metus habitant sociosqu lorem. Luctus facilisi.

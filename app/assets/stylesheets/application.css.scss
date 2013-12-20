@@ -1,13 +1,9 @@
+@import "bourbon";
 @import "bootstrap";
+@import "bootstrap/theme";
 
 /********* Nav Bar *********/
 
-.navbar-inner#special {
-  background-color: rgba(0, 123, 220, 0.80);
-  background-image: none;
-  background-repeat: no-repeat;
-  filter: none;
-}
 .user-avatar.nav.pull-left {
   height:40px;
   width:40px;
@@ -17,25 +13,11 @@
   height:40px;
   width:40px;
 }
-
-.navbar .nav > li > a {
-  color:white;
-  text-decoration: none;
-  text-shadow: none;
-}
-
 
 /***** General ******/
 
-.hero-unit {
-  background: #feffff; /* Old browsers */
-  background: -moz-linear-gradient(left, #feffff 0%, #ddf1f9 35%, #3399FF 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#feffff), color-stop(35%,#ddf1f9), color-stop(100%,#3399FF)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #feffff 0%,#ddf1f9 35%,#3399FF 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #feffff 0%,#ddf1f9 35%,#3399FF 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #feffff 0%,#ddf1f9 35%,#3399FF 100%); /* IE10+ */
+.jumbotron {
   background: linear-gradient(to right, #feffff 0%,#ddf1f9 35%,#3399FF 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#3399FF',GradientType=1 ); /* IE6-9 */
   opacity:0.85;
   filter:alpha(opacity=85);
 }
@@ -51,6 +33,10 @@
   border-bottom:3px solid rgba(0, 102, 255, 1);
 }
 
-.hide { 
-  display: none;
+.hide { display: none; }
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
