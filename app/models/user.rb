@@ -35,6 +35,13 @@ class User < ActiveRecord::Base
   def voted?(post)
     self.votes.where(post_id: post.id).first
   end
+  
+  def avatar_size(size)
+    case size
+    when "small" then self.avatar.small.url
+    when "tiny" then self.avatar.tiny.url
+    end
+  end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
